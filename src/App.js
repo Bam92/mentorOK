@@ -1,12 +1,64 @@
 
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 import MentorCardList from './mentorCardList'
+import MentorCard from './mentorCard'
 
 import './App.css'
 
 function App() {
     
+    return (
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <Link to='/mentors'>Mentors</Link>
+              </li>
+              {/* <li>
+                <Link to='/mentors/:mentorname'>Mentor</Link>
+              </li> */}
+            </ul>
+          </nav>
+
+          <Switch>
+          <Route path="/mentors/:mentorname">
+              <Mentor />
+            </Route>
+            <Route path="/mentors">
+              <Mentors />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>     
+    )
+
+  }
+
+  function Home() {
+    return (
+      <div>
+        <p>MentorOK est votre plateforme qui vous permet de grandir professionnellement </p>
+        <p>Trouvez les mentors <Link to='/mentors'>ici</Link> </p>
+      </div>
+   )
+  }
+
+  function Mentors() {
     return (
       <div style={{
         width: `80%`,
@@ -16,7 +68,23 @@ function App() {
         <MentorCardList profiles={profiles} />
       </div>
     )
+  }
 
+  function Mentor() {
+    const { mentorname } = useParams()
+    let profile = profiles.
+      find(mentor => mentor.name === mentorname)
+   
+    console.log('mentor name is' + profile)
+    return (
+      <div style={{
+        width: `80%`,
+        margin: `auto`
+      }}>
+        <h1>Profile de {profile.name} </h1>
+        <MentorCard  {...profile} />
+      </div>
+    )
   }
 
   const profiles = [

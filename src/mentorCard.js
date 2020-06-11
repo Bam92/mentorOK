@@ -29,7 +29,7 @@ const mentorCard = (props) => {
             width: `80%`
           }}
         >
-          <h2> {profile.name} </h2>
+          <h2> <a href={'mentors/' + profile.name}>{profile.name}</a> </h2>
           <h3> {profile.title} - {profile.company} </h3>
           <p 
             style={{
