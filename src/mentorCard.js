@@ -14,7 +14,7 @@ const mentorCard = (props) => {
 
   return (   
     
-      <div style={style}>
+      <div style={style} >
         <img alt="mentor pic" src={profile.img}
           style={{
             width: `7.5em`,

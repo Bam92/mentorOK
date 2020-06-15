@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +12,7 @@ import MentorCardList from './mentorCardList'
 import MentorCard from './mentorCard'
 
 import './App.css'
+// import { useEffect } from "react";
 
 function App() {
     
@@ -50,6 +51,9 @@ function App() {
   }
 
   function Home() {
+    useEffect(() => {
+      document.title = `MentorOK - votre réussite professionnelle garentie!`
+    })
     return (
       <div>
         <p>MentorOK est votre plateforme qui vous permet de grandir professionnellement </p>
@@ -59,6 +63,9 @@ function App() {
   }
 
   function Mentors() {
+    useEffect(() => {
+      document.title = `MentorOK - Liste des nos mentors `
+    })
     return (
       <div style={{
         width: `80%`,
@@ -72,10 +79,12 @@ function App() {
 
   function Mentor() {
     const { mentorname } = useParams()
-    let profile = profiles.
-      find(mentor => mentor.name === mentorname)
-   
-    console.log('mentor name is' + profile)
+    let profile = profiles
+      .find(mentor => mentor.name === mentorname)
+    
+    useEffect(() => {
+      document.title = `MentorOK - Profile de ${mentorname}`
+    })
     return (
       <div style={{
         width: `80%`,

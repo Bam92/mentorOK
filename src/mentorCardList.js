@@ -7,7 +7,7 @@ export default (props) => {
 
   return (
     <>
-      { props.profiles.map(profile => <MentorCard key={profile.id} {...profile} />) }
+      { props.profiles.map((profile, idx) => <MentorCard key={idx} {...profile} />) }
         
     </>
 )
