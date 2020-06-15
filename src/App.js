@@ -85,6 +85,7 @@ function App() {
     useEffect(() => {
       document.title = `MentorOK - Profile de ${mentorname}`
     })
+    
     return (
       <div style={{
         width: `80%`,

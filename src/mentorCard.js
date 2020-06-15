@@ -2,7 +2,8 @@
 import React from 'react'
 
 const mentorCard = (props) => {
-  const profile = props
+  const  profile  = props
+  
   const style = {
     display: 'flex',
     border: '2px solid green',
@@ -15,7 +16,9 @@ const mentorCard = (props) => {
   return (   
     
       <div style={style} >
-        <img alt="mentor pic" src={profile.img}
+        <img 
+          alt={profile.name} 
+          src={profile.img}
           style={{
             width: `7.5em`,
             height:`7.5em`,
@@ -29,7 +32,14 @@ const mentorCard = (props) => {
             width: `80%`
           }}
         >
-          <h2> <a href={'mentors/' + profile.name}>{profile.name}</a> </h2>
+          <h2> {" "} 
+            { 
+              props.path  
+              ? <a href={'mentors/' + profile.name}>{profile.name}</a> 
+              : <span>{profile.name}</span>
+            }
+          
+          </h2>
           <h3> {profile.title} - {profile.company} </h3>
           <p 
             style={{
