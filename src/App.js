@@ -1,70 +1,40 @@
 
 import React, { useEffect } from 'react'
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
   useParams
 } from "react-router-dom";
 
 import MentorCardList from './mentorCardList'
 import MentorCard from './mentorCard'
+import Nav from './components/Navbar'
+import Landing from './components/Home'
 
 import './App.css'
-// import { useEffect } from "react";
 
 function App() {
     
     return (
-      <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/mentors'>Mentors</Link>
-              </li>
-              {/* <li>
-                <Link to='/mentors/:mentorname'>Mentor</Link>
-              </li> */}
-            </ul>
-          </nav>
-
-          <Switch>
-          <Route path="/mentors/:mentorname">
-              <Mentor />
-            </Route>
-            <Route path="/mentors">
-              <Mentors />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </div>
-      </Router>     
+      <Nav />
+        
     )
 
   }
 
-  function Home() {
+  export function Home() {
     useEffect(() => {
-      document.title = `MentorOK - votre réussite professionnelle garentie!`
+      document.title = `MentorOK - Connecter les débutants aux mentors pros!`
     })
     return (
       <div>
-        <p>MentorOK est votre plateforme qui vous permet de grandir professionnellement </p>
-        <p>Trouvez les mentors <Link to='/mentors'>ici</Link> </p>
+        <Landing />
+       
       </div>
    )
   }
 
-  function Mentors() {
+  export function Mentors() {
     useEffect(() => {
-      document.title = `MentorOK - Liste des nos mentors `
+      document.title = `MentorOK - Fais ton choix parmis nos mentors `
     })
     return (
       <div style={{
@@ -77,7 +47,7 @@ function App() {
     )
   }
 
-  function Mentor() {
+  export function Mentor() {
     const { mentorname } = useParams()
     let profile = profiles
       .find(mentor => mentor.name === mentorname)
