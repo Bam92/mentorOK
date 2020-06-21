@@ -17,9 +17,18 @@ const Navbar = () => {
     margin: '.8em 1.8em', 
   }
 
+  const NotFoundPage = () => {
+    return (
+     <div>
+        <h3>404 - Not found</h3>
+        <p>You should need to return <Link to="/">home</Link></p>
+     </div>
+    )
+  }
+
   return ( 
     <Router>
-    <div>
+      <div>
       <nav className="navbar" role="navigation" style={style}>
         <div id="logo">
             <Link to="/">mentorOK</Link>
@@ -39,19 +48,22 @@ const Navbar = () => {
      </nav>
 
       <Switch>
-        <Route path="/mentors/:mentorname">
+        <Route exact path="/mentors/:mentorname">
           <Mentor />
         </Route>
-        <Route path="/mentors">
+        <Route exact path="/mentors">
           <Mentors />
         </Route>
-        <Route path="/auth/login">
+        <Route exact path="/auth/login">
           <Login />
         </Route>
-        <Route path="/">
+        <Route exact path="/auth/signup">
+          <Login />
+        </Route>
+        <Route exact path="/">
           <Home />
         </Route>
-        
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   </Router>       
