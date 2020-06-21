@@ -1,17 +1,62 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 import MentorCardList from "./mentorCardList";
 import MentorCard from "./mentorCard";
 import Nav from "./components/Navbar";
 import Landing from "./components/Home";
 import LoginView from "./components/Login";
+import Admin from "./components/Admin";
+import { AuthContext } from "./context/auth";
 
 import "./App.css";
 
 function App() {
-  return <Nav />;
+  return (
+    <AuthContext.Provider value={false}>
+      <Router>
+        <div>
+          <Nav /> {/* Navbar */}
+          <Switch>
+            <Route exact path="/mentors/:mentorname">
+              <Mentor />
+            </Route>
+            <Route exact path="/mentors">
+              <Mentors />
+            </Route>
+            <Route exact path="/auth/login">
+              <Login />
+            </Route>
+            <Route exact path="/auth/signup">
+              <Login />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route component={NotFoundPage} />
+          </Switch>
+        </div>
+      </Router>
+    </AuthContext.Provider>
+  );
 }
+
+const NotFoundPage = () => {
+  return (
+    <div>
+      <h3>404 - Not found</h3>
+      <p>
+        You should need to return <Link to="/">home</Link>
+      </p>
+    </div>
+  );
+};
 
 export function Login() {
   useEffect(() => {
@@ -20,16 +65,15 @@ export function Login() {
 
   const style = {
     margin: "10em auto",
-    // border: "2px solid red",
     width: "45vw"
-  }
+  };
 
   return (
     <div style={style}>
       <h1>Se connecter</h1>
       <LoginView />
     </div>
-  )
+  );
 }
 
 export function Home() {
@@ -115,4 +159,5 @@ const profiles = [
     availability: "ok"
   }
 ];
+
 export default App;
