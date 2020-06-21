@@ -6,7 +6,7 @@ import {
     Link,
   } from "react-router-dom";
 
-  import { Mentors, Mentor, Home } from '../App'
+  import { Mentors, Mentor, Home, Login } from '../App'
   import './Navbar.css'
 
 const Navbar = () => {
@@ -33,8 +33,8 @@ const Navbar = () => {
             }}
         >
             <Link to="/mentors">Tous les mentors</Link>
-            <Link to="/login">Se connecter</Link>
-            <Link to="/signup">Se Joindre gratuitement</Link>
+            <Link to="/auth/login">Se connecter</Link>
+            <Link to="/auth/signup">Se Joindre gratuitement</Link>
         </div>
      </nav>
 
@@ -45,9 +45,13 @@ const Navbar = () => {
         <Route path="/mentors">
           <Mentors />
         </Route>
+        <Route path="/auth/login">
+          <Login />
+        </Route>
         <Route path="/">
           <Home />
         </Route>
+        
       </Switch>
     </div>
   </Router>       
