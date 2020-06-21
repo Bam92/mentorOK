@@ -48,7 +48,7 @@ const Landing = () => {
                     textAlign: 'right',
                     marginBottom: '.5em'
                 }}> 
-                    <strong>Un mentor dédié pour votre réussite professionnelle </strong>
+                    <strong>Un mentor dédié pour TA réussite professionnelle </strong>
                 
                 </div>
                 
@@ -61,7 +61,7 @@ const Landing = () => {
                     borderRadius: '5px',
                     padding: '1em',
                     
-                  }}>Trouves-en ici!</div>
+                  }}>J'en veux un</div>
                 </Link>
                 
             </div>
