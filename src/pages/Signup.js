@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const Login = () => {
+const Signup = () => {
+  useEffect(() => {
+    document.title = `Se connecter - MentorOK`;
+  });
+
+  const style = {
+    margin: "10em auto",
+    width: "45vw"
+  };
+
   const styleInput = {
     padding: '.4em',
     width: '30vw',
@@ -11,16 +20,20 @@ const Login = () => {
     marginBottom: "1em",
   };
 
-
   return (
-    <main role="main">
-      <form >
+    <main role="main" style={style}>
+      <h1>Se joindre</h1>
+      <form>
         <div style={mainStyle}>
           <label>Email ou nom d'utilisateur</label><br />
           <input type="text" style={styleInput} />
         </div>
         <div style={mainStyle}>
           <label>Mot de pass</label><br />
+          <input type="password" style={styleInput} />
+        </div>
+        <div style={mainStyle}>
+          <label>Confirmer mot de pass</label><br />
           <input type="password" style={styleInput} />
         </div>
         <div>
@@ -43,4 +56,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

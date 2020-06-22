@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,38 +7,46 @@ import {
   useParams
 } from "react-router-dom";
 
-import MentorCardList from "./mentorCardList";
-import MentorCard from "./mentorCard";
-import Nav from "./components/Navbar";
-import Landing from "./components/Home";
-import LoginView from "./components/Login";
-import Admin from "./components/Admin";
+import Mentors from "./pages/Mentors";
+import MentorCard from "./pages/Mentor";
+import Navigation from "./components/Navigation";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Admin from "./pages/Admin";
 import { AuthContext } from "./context/auth";
+import PrivateRoute from "./PrivateRoute";
+import * as ROUTES from "./constants/routes";
 
 import "./App.css";
 
-function App() {
+function App(props) {
+  const getTokens = JSON.parse(localStorage.getItem("tokens"));
+  const [authTokens, setAuthTokens] = useState(getTokens);
+
+  const setTokens = data => {
+    localStorage.getItem("tokens", JSON.stringify(data));
+    setAuthTokens(data);
+  };
+
+  
   return (
-    <AuthContext.Provider value={false}>
+    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
       <Router>
         <div>
-          <Nav /> {/* Navbar */}
+          <Navigation />
+
           <Switch>
-            <Route exact path="/mentors/:mentorname">
+            <Route path={ROUTES.MENTOR_PROFILE}>
               <Mentor />
             </Route>
-            <Route exact path="/mentors">
-              <Mentors />
+            <Route path={ROUTES.MENTORS}>
+              <Mentors profiles={profiles} />
             </Route>
-            <Route exact path="/auth/login">
-              <Login />
-            </Route>
-            <Route exact path="/auth/signup">
-              <Login />
-            </Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
+            <Route exact path={ROUTES.SIGN_IN} component={Login} />
+            <Route exact path={ROUTES.SIGN_UP} component={Signup} />
+            <PrivateRoute path={ROUTES.ADMIN} component={Admin} />
+            <Route exact path={ROUTES.LANDING} component={Landing} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>
@@ -57,52 +65,6 @@ const NotFoundPage = () => {
     </div>
   );
 };
-
-export function Login() {
-  useEffect(() => {
-    document.title = `Se connecter - MentorOK`;
-  });
-
-  const style = {
-    margin: "10em auto",
-    width: "45vw"
-  };
-
-  return (
-    <div style={style}>
-      <h1>Se connecter</h1>
-      <LoginView />
-    </div>
-  );
-}
-
-export function Home() {
-  useEffect(() => {
-    document.title = `MentorOK - Connecter les débutants aux mentors pros!`;
-  });
-  return (
-    <div>
-      <Landing />
-    </div>
-  );
-}
-
-export function Mentors() {
-  useEffect(() => {
-    document.title = `MentorOK - Fais ton choix parmis nos mentors `;
-  });
-  return (
-    <div
-      style={{
-        width: `80%`,
-        margin: `auto`
-      }}
-    >
-      <h1>Consulte nos Mentors </h1>
-      <MentorCardList profiles={profiles} />
-    </div>
-  );
-}
 
 export function Mentor() {
   const { mentorname } = useParams();
@@ -125,7 +87,7 @@ export function Mentor() {
   );
 }
 
-const profiles = [
+export const profiles = [
   {
     name: "Abel Mbula",
     img: "/images/abel-profile.png",
