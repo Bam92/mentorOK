@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Card, Input, Button } from "../components/AuthForm";
 
 const Signup = () => {
   useEffect(() => {
@@ -21,38 +22,27 @@ const Signup = () => {
   };
 
   return (
-    <main role="main" style={style}>
+    <Card role="main">
       <h1>Se joindre</h1>
       <form>
         <div style={mainStyle}>
-          <label>Email ou nom d'utilisateur</label><br />
-          <input type="text" style={styleInput} />
+          <label>Email </label>
+          <br />
+          <Input type="text" />
         </div>
         <div style={mainStyle}>
-          <label>Mot de pass</label><br />
-          <input type="password" style={styleInput} />
+          <label>Mot de passe</label>
+          <br />
+          <Input type="password" />
         </div>
         <div style={mainStyle}>
-          <label>Confirmer mot de pass</label><br />
-          <input type="password" style={styleInput} />
+          <label>Confirmer mot de passe</label>
+          <br />
+          <Input type="password" />
         </div>
-        <div>
-          <input 
-            type="submit" 
-            value="Envoyer" 
-            style={{
-              border: '2px solid ',
-              padding: '.5em',
-              borderRadius: '5px',
-              color: '#fff',
-              background: 'blue',
-              fontSize:'inherit',
-              cursor:'pointer'
-            }}
-          />
-        </div>
+        <Button>Envoyer</Button>
       </form>
-    </main>
+    </Card>
   );
 };
 

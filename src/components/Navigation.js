@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import * as ROUTES from "../constants/routes"
+import * as ROUTES from "../constants/routes";
 
 import "./Navbar.css";
 
@@ -8,7 +8,13 @@ const Navbar = () => {
   const style = {
     display: "flex",
     justifyContent: "space-between",
-    margin: ".8em 1.8em"
+    margin: ".8em 1.8em",
+  };
+
+  const inputStyle = {
+    fontStyle: "italic",
+    width: "30vw",
+    padding: ".5em 1.8em",
   };
 
   return (
@@ -16,16 +22,20 @@ const Navbar = () => {
       <div id="logo">
         <Link to={ROUTES.LANDING}>mentorOK</Link>
       </div>
-      <input type="search" placeholder="rechercher" />
+      <input
+        type="search"
+        placeholder="Je veux un mentor en..."
+        style={inputStyle}
+      />
       <div
         id="nav-items"
         style={{
           display: "flex",
-          justifyContent: "space-around"
+          justifyContent: "space-between",
         }}
       >
-        <Link to={ROUTES.MENTORS}>Tous les mentors</Link>
-        <Link to={ROUTES.SIGN_IN}>Se connecter</Link>
+        <Link to={ROUTES.MENTORS}>Explorer</Link>
+        <Link to={ROUTES.SIGN_IN}>Connexion</Link>
         <Link to={ROUTES.SIGN_UP}>Se Joindre gratuitement</Link>
       </div>
     </nav>

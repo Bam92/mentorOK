@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import Mentor from "./Mentor";
 
-export default props => {
+export default (props) => {
   useEffect(() => {
     document.title = `MentorOK - Fais ton choix parmis nos mentors `;
   });
@@ -11,7 +11,7 @@ export default props => {
     <div
       style={{
         width: `80%`,
-        margin: `auto`
+        margin: `auto`,
       }}
     >
       <h1>Consulte nos Mentors </h1>
