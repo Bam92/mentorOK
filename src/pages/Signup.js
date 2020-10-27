@@ -6,17 +6,6 @@ const Signup = () => {
     document.title = `Se connecter - MentorOK`;
   });
 
-  const style = {
-    margin: "10em auto",
-    width: "45vw"
-  };
-
-  const styleInput = {
-    padding: '.4em',
-    width: '30vw',
-    borderRadius: '5px'
-  };
-
   const mainStyle = {
     marginBottom: "1em",
   };
@@ -38,7 +27,7 @@ const Signup = () => {
         <div style={mainStyle}>
           <label>Confirmer mot de passe</label>
           <br />
-          <Input type="password" />
+          <Input type=                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "password" />
         </div>
         <Button>Envoyer</Button>
       </form>
