@@ -1,8 +1,8 @@
 import React from "react";
 
-const Mentor = props => {
+const Mentor = ({ profile, path }) => {
  
-  const profile = props;
+  // const profile = props;
 
   const style = {
     display: "flex",
@@ -33,7 +33,7 @@ const Mentor = props => {
       >
         <h2>
           {" "}
-          {props.path ? (
+          {path ? (
             <a href={"mentors/" + profile.name}>{profile.name}</a>
           ) : (
             <span>{profile.name}</span>

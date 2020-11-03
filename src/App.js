@@ -20,7 +20,7 @@ import * as ROUTES from "./constants/routes";
 
 import "./App.css";
 
-function App(props) {
+function App() {
   const getTokens = JSON.parse(localStorage.getItem("tokens"));
   const [authTokens, setAuthTokens] = useState(getTokens);
 
@@ -54,16 +54,14 @@ function App(props) {
   );
 }
 
-const NotFoundPage = () => {
-  return (
+const NotFoundPage = () => 
     <div>
       <h3>404 - Not found</h3>
       <p>
         You should need to return <Link to="/">home</Link>
       </p>
     </div>
-  );
-};
+
 
 export function Mentor() {
   const { mentorname } = useParams();
