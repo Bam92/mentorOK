@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function App() {
   const profiles = [
@@ -33,8 +33,36 @@ function App() {
     },
   ];
 
-  return <Mentors list={profiles} />;
+  const handleSearch = event => console.log(event.target.value);
+
+  return (
+    <div>
+      <Search onSearch={handleSearch} />
+      <hr />
+      <Mentors list={profiles} />
+    </div>
+  );
 }
+
+const Search = props => {
+  const [searchTerm, setSearchTerm] = useState();
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+
+    props.onSearch(event);
+  };
+
+  return (
+    <div>
+      <label htmlFor="search">Search: </label>
+      <input id="search" type="text" onChange={handleChange} />
+      <p>
+        Searching for: <strong>{searchTerm}</strong>.
+      </p>
+    </div>
+  );
+};
 
 const Mentors = props =>
   props.list.map(mentor => (
