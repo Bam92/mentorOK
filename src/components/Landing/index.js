@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Landing = () => {
   useEffect(() => {
-    document.title = `MentorOK - Connecter les débutants aux mentors pros!`;
+    document.title = `Mental - Connecter les débutants aux mentors pros!`;
   });
   
   const styleFlex = {

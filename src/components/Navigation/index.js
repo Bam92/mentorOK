@@ -20,13 +20,13 @@ const Navbar = () => {
   return (
     <nav className="navbar" role="navigation" style={style}>
       <div id="logo">
-        <Link to={ROUTES.LANDING}>mentorOK</Link>
+        <Link to={ROUTES.LANDING}>mental</Link>
       </div>
-      <input
+      {/* <input
         type="search"
         placeholder="Je veux un mentor en..."
         style={inputStyle}
-      />
+      /> */}
       <div
         id="nav-items"
         style={{
