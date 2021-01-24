@@ -7,16 +7,16 @@ import {
   useParams,
 } from "react-router-dom";
 
-import Mentors from "./pages/Mentors";
-import MentorCard from "./pages/Mentor";
-import Navigation from "./components/Navigation";
-import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Admin from "./pages/Admin";
-import { AuthContext } from "./context/auth";
-import PrivateRoute from "./PrivateRoute";
-import * as ROUTES from "./constants/routes";
+import Mentors from "../Mentors";
+import MentorCard from "../Mentor";
+import Navigation from "../Navigation";
+import Landing from "../Landing";
+import Login from "../../pages/Login";
+import Signup from "../../pages/Signup";
+import Admin from "../../pages/Admin";
+import { AuthContext } from "../../context/auth";
+import PrivateRoute from "../../PrivateRoute";
+import * as ROUTES from "../../constants/routes";
 
 import "./App.css";
 
@@ -36,12 +36,8 @@ function App() {
           <Navigation />
 
           <Switch>
-            <Route path={ROUTES.MENTOR_PROFILE}>
-              <Mentor />
-            </Route>
-            <Route path={ROUTES.MENTORS}>
-              <Mentors profiles={profiles} />
-            </Route>
+            <Route path={ROUTES.MENTOR_PROFILE} component={Mentor} />
+            <Route path={ROUTES.MENTORS} component={Mentors} />
             <Route exact path={ROUTES.SIGN_IN} component={Login} />
             <Route exact path={ROUTES.SIGN_UP} component={Signup} />
             <PrivateRoute path={ROUTES.ADMIN} component={Admin} />
@@ -54,14 +50,14 @@ function App() {
   );
 }
 
-const NotFoundPage = () => 
-    <div>
-      <h3>404 - Not found</h3>
-      <p>
-        You should need to return <Link to="/">home</Link>
-      </p>
-    </div>
-
+const NotFoundPage = () => (
+  <div>
+    <h3>404 - Not found</h3>
+    <p>
+      You should need to return <Link to="/">home</Link>
+    </p>
+  </div>
+);
 
 export function Mentor() {
   const { mentorname } = useParams();
@@ -79,7 +75,7 @@ export function Mentor() {
       }}
     >
       <h1>Profile de {profile.name} </h1>
-      <MentorCard {...profile} />
+      <MentorCard profile={profile} />
     </div>
   );
 }

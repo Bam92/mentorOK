@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import * as ROUTES from "../constants/routes";
+import * as ROUTES from "../../constants/routes";
 
 import "./Navbar.css";
 
@@ -34,9 +34,17 @@ const Navbar = () => {
           justifyContent: "space-between",
         }}
       >
-        <Link to={ROUTES.MENTORS}>Explorer</Link>
-        <Link to={ROUTES.SIGN_IN}>Connexion</Link>
-        <Link to={ROUTES.SIGN_UP}>Se Joindre gratuitement</Link>
+        <ul>
+          <li>
+            <Link to={ROUTES.MENTORS}>Explorer</Link>
+          </li>
+          <li>
+            <Link to={ROUTES.SIGN_IN}>Connexion</Link>
+          </li>
+          <li>
+            <Link to={ROUTES.SIGN_UP}>Se Joindre gratuitement</Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );

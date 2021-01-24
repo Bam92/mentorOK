@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 
-import Mentor from "./Mentor";
+import Mentor from "../Mentor";
+import {profiles} from "../App"
 
-export default ({ profiles }) => {
+export default () => {
   useEffect(() => {
     document.title = `Mental, great mentors and great mentees`;
   });
@@ -15,9 +16,9 @@ export default ({ profiles }) => {
       }}
     >
       <h1>Consulte nos Mentors </h1>
-      {profiles.map(profile => 
-        <Mentor key={profile.id} {...profile} path="/mentors" />
-      )}
+      {profiles.map((profile) => (
+        <Mentor key={profile.id} profile={profile} path="/mentors" />
+      ))}
     </div>
   );
 };

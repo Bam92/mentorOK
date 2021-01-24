@@ -1,8 +1,6 @@
 import React from "react";
 
 const Mentor = ({ profile, path }) => {
- 
-  // const profile = props;
 
   const style = {
     display: "flex",
@@ -10,7 +8,7 @@ const Mentor = ({ profile, path }) => {
     marginBottom: `1.5em`,
     background: "#fff",
     padding: "1.5em",
-    borderRadius: ".3em"
+    borderRadius: ".3em",
   };
 
   return (
@@ -22,13 +20,13 @@ const Mentor = ({ profile, path }) => {
           width: `7.5em`,
           height: `7.5em`,
           borderRadius: `50%`,
-          margin: `0 3em`
+          margin: `0 3em`,
         }}
       />
       <div
         className="mentor-info"
         style={{
-          width: `80%`
+          width: `80%`,
         }}
       >
         <h2>
@@ -46,7 +44,7 @@ const Mentor = ({ profile, path }) => {
         <p
           style={{
             margin: `1.5em 0`,
-            lineHeight: `1.5`
+            lineHeight: `1.5`,
           }}
         >
           {profile.description}
