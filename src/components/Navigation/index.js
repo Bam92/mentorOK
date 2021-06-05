@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className="navbar" role="navigation" style={style}>
       <div id="logo">
-        <Link to={ROUTES.LANDING}>mental</Link>
+        <Link to={ROUTES.LANDING}>mentale</Link>
       </div>
       {/* <input
         type="search"

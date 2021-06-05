@@ -12,7 +12,7 @@ import MentorCard from "../Mentor";
 import Navigation from "../Navigation";
 import Landing from "../Landing";
 import Login from "../../pages/Login";
-import Signup from "../../pages/Signup";
+import Signup from "../SignUp";
 import Admin from "../../pages/Admin";
 import { AuthContext } from "../../context/auth";
 import PrivateRoute from "../../PrivateRoute";
@@ -20,35 +20,50 @@ import * as ROUTES from "../../constants/routes";
 
 import "./App.css";
 
-function App() {
-  const getTokens = JSON.parse(localStorage.getItem("tokens"));
-  const [authTokens, setAuthTokens] = useState(getTokens);
+const App = () => (
+  <Router>
+    <div>
+      <Navigation />
 
-  const setTokens = (data) => {
-    localStorage.getItem("tokens", JSON.stringify(data));
-    setAuthTokens(data);
-  };
+      <Switch>
+        <Route path={ROUTES.MENTOR_PROFILE} component={Mentor} />
+        <Route path={ROUTES.MENTORS} component={Mentors} />
+        <Route exact path={ROUTES.SIGN_IN} component={Login} />
+        <Route exact path={ROUTES.SIGN_UP} component={Signup} />
+        <PrivateRoute path={ROUTES.ADMIN} component={Admin} />
+        <Route exact path={ROUTES.LANDING} component={Landing} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </div>
+  </Router>
+  // const getTokens = JSON.parse(localStorage.getItem("tokens"));
+  // const [authTokens, setAuthTokens] = useState(getTokens);
 
-  return (
-    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
-      <Router>
-        <div>
-          <Navigation />
+  // const setTokens = (data) => {
+  //   localStorage.getItem("tokens", JSON.stringify(data));
+  //   setAuthTokens(data);
+  // };
 
-          <Switch>
-            <Route path={ROUTES.MENTOR_PROFILE} component={Mentor} />
-            <Route path={ROUTES.MENTORS} component={Mentors} />
-            <Route exact path={ROUTES.SIGN_IN} component={Login} />
-            <Route exact path={ROUTES.SIGN_UP} component={Signup} />
-            <PrivateRoute path={ROUTES.ADMIN} component={Admin} />
-            <Route exact path={ROUTES.LANDING} component={Landing} />
-            <Route component={NotFoundPage} />
-          </Switch>
-        </div>
-      </Router>
-    </AuthContext.Provider>
-  );
-}
+  // return (
+  //   <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+  //     <Router>
+  // <div>
+  //   <Navigation />
+
+  //   <Switch>
+  //     <Route path={ROUTES.MENTOR_PROFILE} component={Mentor} />
+  //     <Route path={ROUTES.MENTORS} component={Mentors} />
+  //     <Route exact path={ROUTES.SIGN_IN} component={Login} />
+  //     <Route exact path={ROUTES.SIGN_UP} component={Signup} />
+  //     <PrivateRoute path={ROUTES.ADMIN} component={Admin} />
+  //     <Route exact path={ROUTES.LANDING} component={Landing} />
+  //     <Route component={NotFoundPage} />
+  //   </Switch>
+  // </div>
+  //     </Router>
+  //   </AuthContext.Provider>
+  // );
+);
 
 const NotFoundPage = () => (
   <div>
@@ -64,7 +79,7 @@ export function Mentor() {
   let profile = profiles.find((mentor) => mentor.name === mentorname);
 
   useEffect(() => {
-    document.title = `MentorOK - Profile de ${mentorname}`;
+    document.title = `Mental - Profile de ${mentorname}`;
   });
 
   return (
