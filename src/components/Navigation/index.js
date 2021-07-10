@@ -11,12 +11,6 @@ const Navbar = () => {
     margin: ".8em 1.8em",
   };
 
-  const inputStyle = {
-    fontStyle: "italic",
-    width: "30vw",
-    padding: ".5em 1.8em",
-  };
-
   return (
     <nav className="navbar" role="navigation" style={style}>
       <div id="logo">

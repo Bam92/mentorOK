@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,10 +11,10 @@ import Mentors from "../Mentors";
 import MentorCard from "../Mentor";
 import Navigation from "../Navigation";
 import Landing from "../Landing";
+import Home from "../Home";
 import Login from "../../pages/Login";
 import Signup from "../SignUp";
 import Admin from "../../pages/Admin";
-import { AuthContext } from "../../context/auth";
 import PrivateRoute from "../../PrivateRoute";
 import * as ROUTES from "../../constants/routes";
 
@@ -27,6 +27,7 @@ const App = () => (
 
       <Switch>
         <Route path={ROUTES.MENTOR_PROFILE} component={Mentor} />
+        <Route path={ROUTES.HOME} component={Home} />
         <Route path={ROUTES.MENTORS} component={Mentors} />
         <Route exact path={ROUTES.SIGN_IN} component={Login} />
         <Route exact path={ROUTES.SIGN_UP} component={Signup} />
@@ -36,33 +37,6 @@ const App = () => (
       </Switch>
     </div>
   </Router>
-  // const getTokens = JSON.parse(localStorage.getItem("tokens"));
-  // const [authTokens, setAuthTokens] = useState(getTokens);
-
-  // const setTokens = (data) => {
-  //   localStorage.getItem("tokens", JSON.stringify(data));
-  //   setAuthTokens(data);
-  // };
-
-  // return (
-  //   <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
-  //     <Router>
-  // <div>
-  //   <Navigation />
-
-  //   <Switch>
-  //     <Route path={ROUTES.MENTOR_PROFILE} component={Mentor} />
-  //     <Route path={ROUTES.MENTORS} component={Mentors} />
-  //     <Route exact path={ROUTES.SIGN_IN} component={Login} />
-  //     <Route exact path={ROUTES.SIGN_UP} component={Signup} />
-  //     <PrivateRoute path={ROUTES.ADMIN} component={Admin} />
-  //     <Route exact path={ROUTES.LANDING} component={Landing} />
-  //     <Route component={NotFoundPage} />
-  //   </Switch>
-  // </div>
-  //     </Router>
-  //   </AuthContext.Provider>
-  // );
 );
 
 const NotFoundPage = () => (
